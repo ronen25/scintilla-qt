@@ -96,19 +96,19 @@ set(SCINTILLA_QT_EDIT_SOURCES
     src/XPM.h
 )
 
-add_library(scintilla-qt-edit ${SCINTILLA_QT_EDIT_SOURCES} )
+add_library(scintilla ${SCINTILLA_QT_EDIT_SOURCES} )
 
-target_include_directories(scintilla-qt-edit PRIVATE include/ src/ qt/ qt/ScintillaEditBase)
-target_compile_definitions(scintilla-qt-edit PRIVATE
+target_include_directories(scintilla PRIVATE include/ src/ qt/ qt/ScintillaEditBase)
+target_compile_definitions(scintilla PRIVATE
     -DSCINTILLA_QT=1
     -DMAKING_LIBRARY=1
     -DSCI_LEXER=1
     -D_CRT_SECURE_NO_DEPRECATE=1
 )
-target_include_directories(scintilla-qt-edit PUBLIC include/ src/ qt/ScintillaEdit qt/ScintillaEditBase )
-target_link_libraries(scintilla-qt-edit PRIVATE Qt::Widgets )
+target_include_directories(scintilla PUBLIC include/ src/ qt/ScintillaEdit qt/ScintillaEditBase )
+target_link_libraries(scintilla PRIVATE Qt::Widgets )
 if (Qt6_FOUND)
-    target_link_libraries(scintilla-qt-edit PRIVATE Qt6::Core5Compat)
+    target_link_libraries(scintilla PRIVATE Qt6::Core5Compat)
 endif()
-set_property(TARGET scintilla-qt-edit PROPERTY VERSION "${CMAKE_PROJECT_VERSION}")
-set_property(TARGET scintilla-qt-edit PROPERTY SOVERSION 5 )
+set_property(TARGET scintilla PROPERTY VERSION "${CMAKE_PROJECT_VERSION}")
+set_property(TARGET scintilla PROPERTY SOVERSION 5 )
